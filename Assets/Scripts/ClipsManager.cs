@@ -20,21 +20,19 @@ public class ClipsManager : ContentManager
         int clipsCount = twitchInfo["data"].Count;
 
         for (int prefabCounter = 0; prefabCounter < clipsCount; prefabCounter++)
-        {
-            var currentClipGameObject = Instantiate(prefabToInstantiate, contentList.transform);
-            var currentClipImage = currentClipGameObject.GetComponent<RawImage>();
-            var currentClipName = currentClipImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-      
-            currentClipGameObject.name = twitchInfo["data"][prefabCounter]["title"];
+        {                   
+            InstantiateContent();
 
-            currentClipName.text = twitchInfo["data"][prefabCounter]["title"];
-            currentClipName.text += "\nVIEW COUNT: " + twitchInfo["data"][prefabCounter]["view_count"];
-            currentClipName.text += "\nCREATED BY: " + twitchInfo["data"][prefabCounter]["creator_name"];
+            currentGameObject.name = twitchInfo["data"][prefabCounter]["title"];
 
-            currentClipGameObject.transform.GetChild(4).GetComponent<URLManager>().URL = (twitchInfo["data"][prefabCounter]["url"]);
+            currentName.text = twitchInfo["data"][prefabCounter]["title"];
+            currentName.text += "\nVIEW COUNT: " + twitchInfo["data"][prefabCounter]["view_count"];
+            currentName.text += "\nCREATED BY: " + twitchInfo["data"][prefabCounter]["creator_name"];
+
+            currentGameObject.transform.GetChild(4).GetComponent<URLManager>().URL = (twitchInfo["data"][prefabCounter]["url"]);
 
             var imageURL = twitchInfo["data"][prefabCounter]["thumbnail_url"];
-            yield return twitchApi.ShowOneImageFromURL(imageURL, currentClipImage);
+            yield return twitchApi.ShowOneImageFromURL(imageURL, currentImage);
         }
 
         if (clipsCount > 0)
@@ -47,4 +45,6 @@ public class ClipsManager : ContentManager
         TwitchAPIManager.instance.ShowMainInformationView();
 
     }
+
+
 }

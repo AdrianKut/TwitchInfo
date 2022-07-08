@@ -36,20 +36,17 @@ public class BadgesManager : ContentManager
             if (twitchInfo["data"][indexOfIdSubscriber]["versions"][prefabCounter]["id"] > 1000)
                 continue;
 
-            var currentBadgeGameObject = Instantiate(prefabToInstantiate, contentList.transform);
-            var currentBadgeImage = currentBadgeGameObject.GetComponent<RawImage>();
-            var currentBadgeName = currentBadgeImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-
+            InstantiateContent();
 
             // Name of Badges
-            currentBadgeGameObject.name = twitchInfo["data"][indexOfIdSubscriber]["versions"][prefabCounter]["id"];
+            currentGameObject.name = twitchInfo["data"][indexOfIdSubscriber]["versions"][prefabCounter]["id"];
 
             var name = GetNameOfBadges(twitchInfo["data"][indexOfIdSubscriber]["versions"][prefabCounter]["id"]);
-            currentBadgeName.text = name;
+            currentName.text = name;
 
             var imageURL = twitchInfo["data"][indexOfIdSubscriber]["versions"][prefabCounter]["image_url_4x"];
 
-            yield return twitchApi.ShowOneImageFromURL(imageURL, currentBadgeImage);
+            yield return twitchApi.ShowOneImageFromURL(imageURL, currentImage);
         }
         
         SortAllBadges();

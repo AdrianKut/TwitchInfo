@@ -5,14 +5,14 @@ using UnityEngine.Events;
 
 public class EventsManager : MonoBehaviour
 {
-    public static EventsManager instance;
+    public static EventsManager Instance;
     public static UnityEvent OnLoading;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
             OnLoading = new UnityEvent();
         }

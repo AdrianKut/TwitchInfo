@@ -20,22 +20,20 @@ public class VideosManager : ContentManager
 
         for (int prefabCounter = 0; prefabCounter < videosCounter; prefabCounter++)
         {
-            var currentVideoGameObject = Instantiate(prefabToInstantiate, contentList.transform);
-            var currentVideoImage = currentVideoGameObject.GetComponent<RawImage>();
-            var currentVideoName = currentVideoImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            InstantiateContent();
 
-            currentVideoGameObject.name = twitchInfo["data"][prefabCounter]["title"];
+            currentGameObject.name = twitchInfo["data"][prefabCounter]["title"];
 
-            currentVideoName.text = twitchInfo["data"][prefabCounter]["title"];
-            currentVideoName.text += "\nDURATION: " + twitchInfo["data"][prefabCounter]["duration"];
+            currentName.text = twitchInfo["data"][prefabCounter]["title"];
+            currentName.text += "\nDURATION: " + twitchInfo["data"][prefabCounter]["duration"];
             string createdDate = twitchInfo["data"][prefabCounter]["created_at"];
-            currentVideoName.text += "\nCREATED ON: " + createdDate.Remove(10).ToString().Replace("-", ".");
-            currentVideoGameObject.transform.GetChild(4).GetComponent<URLManager>().URL = (twitchInfo["data"][prefabCounter]["url"]);
+            currentName.text += "\nCREATED ON: " + createdDate.Remove(10).ToString().Replace("-", ".");
+            currentGameObject.transform.GetChild(4).GetComponent<URLManager>().URL = (twitchInfo["data"][prefabCounter]["url"]);
 
             string imageURL = twitchInfo["data"][prefabCounter]["thumbnail_url"];
             imageURL = imageURL.ToString().Replace("%{width}x%{height}.jpg", "480x272.jpg");
 
-            yield return twitchApi.ShowOneImageFromURL(imageURL, currentVideoImage);
+            yield return twitchApi.ShowOneImageFromURL(imageURL, currentImage);
         }
 
         if (videosCounter > 0)

@@ -20,16 +20,13 @@ public class EmotesManager : ContentManager
         int emoteCount = twitchInfo["data"].Count;
         for (int prefabCounter = 0; prefabCounter < emoteCount; prefabCounter++)
         {
-            var currentEmoteGameObject = Instantiate(prefabToInstantiate, contentList.transform);
-            var currentEmoteImage = currentEmoteGameObject.GetComponent<RawImage>();
-            var currentEmoteName = currentEmoteImage.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            InstantiateContent();
 
             string emoteName = twitchInfo["data"][prefabCounter]["name"];
-            currentEmoteName.text = emoteName;
-
+            currentName.text = emoteName;
 
             var imageURL = twitchInfo["data"][prefabCounter]["images"]["url_4x"];
-            yield return twitchApi.ShowOneImageFromURL(imageURL, currentEmoteImage);
+            yield return twitchApi.ShowOneImageFromURL(imageURL, currentImage);
         }
 
         IsReadyToShow = true;
