@@ -1,4 +1,4 @@
-# Twitch Info 
+# :computer: Twitch Info 
 
 <p float="left" align="center">
   <img src="https://play-lh.googleusercontent.com/rDYfzxfpq8d2veO4yRidGpMYKUbzqctxswgj08ZBURF6XV2TEj_GrK59nVehGtexiw=w500-h350-rw" width="200" />
