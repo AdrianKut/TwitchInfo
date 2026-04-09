@@ -16,8 +16,3 @@ Everything about your favourite streamer:
 .. and more :dart:
 
 In this project I mainly focused on JSON scraping and formating data.
-##
-<p align="center">
-  <a href="https://play.google.com/store/apps/details?id=com.AdrianKut.TwitchInfo&gl=PL"> <img width="250" src="https://pilot-rc.com/wp-content/uploads/2019/07/Google-Play-Icon.png" alt="Download app"></a>
-</p>
-
